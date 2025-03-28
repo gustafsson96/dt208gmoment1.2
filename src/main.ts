@@ -13,11 +13,11 @@ interface CourseInfo {
 
 /**
  * Function that displays courses to the screen
-
+*/
 function showCourses() {
-
+  const courseList = document.getElementById("course-list") as HTMLUListElement;
 }
-*/ 
+
 
 /**
  * Function to add a new course to the list
