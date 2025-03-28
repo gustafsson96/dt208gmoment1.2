@@ -10,3 +10,27 @@ interface CourseInfo {
   progression: "A" | "B" | "C";
   syllabus: string;
 }
+
+/**
+ * Function that displays courses to the screen
+
+function showCourses() {
+
+}
+*/ 
+
+/**
+ * Function to add a new course to the list
+
+function addCourse() {
+
+}
+*/
+
+/**
+ * Function to delete a course from the list
+
+function removeCourse() {
+
+}
+*/
