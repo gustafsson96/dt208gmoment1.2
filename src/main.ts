@@ -10,9 +10,7 @@ interface CourseInfo {
   syllabus: string;
 }
 
-/**
- * Function to fetch courses from API only when local storage is empty
- */
+/* Function to fetch courses from API only when local storage is empty */
 async function fetchCourses(): Promise<void> {
   let courses: CourseInfo[] = JSON.parse(localStorage.getItem("courses") || "[]");
 
@@ -29,9 +27,17 @@ async function fetchCourses(): Promise<void> {
   showCourses(courses);
 }
 
-/**
- * Function that displays courses to the screen
-*/
+/* Function to delete a course from the list */
+function removeCourse(index: number): void {
+  let courses: CourseInfo[] = JSON.parse(localStorage.getItem("courses") || "[]");
+
+  courses.splice(index, 1);
+  localStorage.setItem("courses", JSON.stringify(courses));
+
+  showCourses(courses);
+}
+
+/* Function that displays courses to the screen */
 function showCourses(courses: CourseInfo[]): void {
   const courseBody = document.getElementById("course-body") as HTMLTableElement;
   courseBody.innerHTML = "";
@@ -44,26 +50,25 @@ function showCourses(courses: CourseInfo[]): void {
     <td>${course.coursename}</td>
     <td>${course.progression}</td>
     <td><a href="${course.syllabus}" target="_blank" class="syllabus-link">View Syllabus</a></td>
-    <td><button onclick="removeCourse(${index})">Remove</button></td>
+    <td><button class="remove-btn" data-index="${index}">Remove</button></td>
     `;
 
     courseBody.appendChild(row);
   });
+
+courseBody.addEventListener("click", (event) => {
+  const target = event.target as HTMLButtonElement;
+  if (target && target.classList.contains("remove-btn")) {
+    const index = Number(target.getAttribute("data-index"));
+    removeCourse(index);
+  }
+});
 }
 
 
-/**
- * Function to add a new course to the list
+/* Function to add a new course to the list */
 
 function addCourse() {
 
 }
-*/
 
-/**
- * Function to delete a course from the list
-
-function removeCourse() {
-
-}
-*/
