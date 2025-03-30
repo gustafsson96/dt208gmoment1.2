@@ -12,6 +12,13 @@ interface CourseInfo {
 }
 
 /**
+ * Function to fetch course information initially
+ */
+async function fetchCourses(): Promise<void> {
+  
+}
+
+/**
  * Function that displays courses to the screen
 */
 function showCourses() {
