@@ -1,12 +1,11 @@
 import './style.css';
 
-const app = document.querySelector<HTMLDivElement>('#app');
-app!.innerHTML = '<h1>Hello, TypeScript!</h1>';
+document.addEventListener("DOMContentLoaded", fetchCourses);
 
 // Interface for courses
 interface CourseInfo {
   code: number;
-  name: string;
+  coursename: string;
   progression: "A" | "B" | "C";
   syllabus: string;
 }
@@ -34,7 +33,22 @@ async function fetchCourses(): Promise<void> {
  * Function that displays courses to the screen
 */
 function showCourses(courses: CourseInfo[]): void {
-  const courseList = document.getElementById("course-list") as HTMLUListElement;
+  const courseBody = document.getElementById("course-body") as HTMLTableElement;
+  courseBody.innerHTML = "";
+
+  courses.forEach((course, index) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+    <td>${course.code}</td>
+    <td>${course.coursename}</td>
+    <td>${course.progression}</td>
+    <td><a href="${course.syllabus}" target="_blank" class="syllabus-link">View Syllabus</a></td>
+    <td><button onclick="removeCourse(${index})">Remove</button></td>
+    `;
+
+    courseBody.appendChild(row);
+  });
 }
 
 

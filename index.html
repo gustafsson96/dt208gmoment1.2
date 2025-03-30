@@ -7,8 +7,17 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
-    <ul id="course-list"></ul>
+    <table id="course-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Progression</th>
+          <th>Syllabus</th>
+        </tr>
+      </thead>
+      <tbody id="course-body"></tbody>
+    </table>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
