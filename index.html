@@ -18,6 +18,8 @@
       </thead>
       <tbody id="course-body"></tbody>
     </table>
+    <p>Vill du återställa kurslistan till orginalformatet?</p>
+  <button id="reset-btn">Återställ kurser</button>
     <form id="add-course-form">
       <input type="text" id="course-code" maxlength="6" placeholder="Course code" required>
       <input type="text" id="course-name" placeholder="Course name" required>
@@ -26,7 +28,7 @@
         <option value="B">B</option>
         <option value="C">C</option>
       </select>
-      <input type="text" id="course-syllabus" placeholder="Syllabus URL" required>
+      <input type="text" id="course-syllabus" placeholder="Syllabus URL">
       <button type="submit">Lägg till</button>
     </form>
     <script type="module" src="/src/main.ts"></script>

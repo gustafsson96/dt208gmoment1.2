@@ -2,8 +2,11 @@ import './style.css';
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchCourses();
+  
   const form = document.getElementById("add-course-form") as HTMLFormElement;
   form.addEventListener("submit", addCourse);
+
+  document.getElementById("reset-btn")!.addEventListener("click", resetCourses);
 });
 
 // Interface for courses
@@ -21,7 +24,7 @@ async function fetchCourses(): Promise<void> {
   if (courses.length === 0) {
     try {
       const response = await fetch("https://webbutveckling.miun.se/files/ramschema_ht24.json");
-      const courses: CourseInfo[] = await response.json();
+      courses = await response.json();
 
       localStorage.setItem("courses", JSON.stringify(courses));
     } catch (error) {
@@ -125,5 +128,10 @@ courseBody.addEventListener("click", (event) => {
     removeCourse(index);
   }
 });
+}
+
+function resetCourses(): void {
+  localStorage.removeItem("courses");
+  fetchCourses();
 }
 
