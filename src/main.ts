@@ -35,7 +35,8 @@ async function fetchCourses(): Promise<void> {
 function addCourse(event: Event): void {
   event.preventDefault();
 
-  // Get form input values
+  // Get form and inputs
+  const form = document.getElementById("add-course-form") as HTMLFormElement;
   const courseCodeInput = document.getElementById("course-code") as HTMLInputElement;
   const courseCode = courseCodeInput.value;
   const courseNameInput = document.getElementById("course-name") as HTMLInputElement;
@@ -79,6 +80,9 @@ function addCourse(event: Event): void {
 
   // update list of courses to local storage
   localStorage.setItem("courses", JSON.stringify(courses));
+
+  // clear form after submit
+  form.reset();
 
   showCourses(courses);
 }
