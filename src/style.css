@@ -68,7 +68,10 @@ form {
   border-radius: 5px;
   padding: 1em 0.5em;
   margin-bottom: 2em;
-  text-align: center;
+}
+
+form label {
+  font-size: 0.8em;
 }
 
 form input {
@@ -91,6 +94,21 @@ table tr td {
   padding: 1em;
 }
 
+/* media query for screens smaller than 900px */
+@media screen and (max-width: 900px) {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  form button {
+    margin-top: 1em;
+  }
+}
+
+/* media query for screens smaller than 768px */
 @media screen and (max-width: 768px) {
   form {
     display: flex;

@@ -17,7 +17,7 @@ interface CourseInfo {
   syllabus: string;
 }
 
-/* Function to fetch courses from API only when local storage is empty */
+/* Function to fetch courses from miun API only when local storage is empty */
 async function fetchCourses(): Promise<void> {
   let courses: CourseInfo[] = JSON.parse(localStorage.getItem("courses") || "[]");
 
@@ -130,6 +130,7 @@ courseBody.addEventListener("click", (event) => {
 });
 }
 
+/* Function to reset course list to original */
 function resetCourses(): void {
   localStorage.removeItem("courses");
   fetchCourses();
