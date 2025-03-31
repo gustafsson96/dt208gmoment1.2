@@ -52,24 +52,26 @@ function addCourse(event: Event): void {
   // Get courses from local storage
   let courses: CourseInfo[] = JSON.parse(localStorage.getItem("courses") || "[]");
 
-  // Check if course code exists
+  // Check if course code is unique
   const isCodeUnique = !courses.some(course => course.code === courseCode);
   if (!isCodeUnique) {
     alert("Kurskoden måste vara unik.");
     return;
   }
 
+  // Check if course code is 6 chars
   if (courseCode.length !== 6) {
     alert("Kurskoden måste innehålla 6 tecken.");
     return;
   }
 
+  // Check if progression is A, B or C
   if (!["A", "B", "C"].includes(courseProgression)) {
     alert("Kursprogression måste vara A, B eller C.");
     return;
   }
 
-  // new course object
+  // New course object
   const newCourse: CourseInfo = {
     code: courseCode,
     coursename: courseName,
@@ -78,19 +80,17 @@ function addCourse(event: Event): void {
   };
 
 
-  // add new course
+  // Add new course
   courses.push(newCourse);
 
-  // update list of courses to local storage
+  // Update list of courses to local storage
   localStorage.setItem("courses", JSON.stringify(courses));
 
-  // clear form after submit
+  // Clear form after submit
   form.reset();
 
   showCourses(courses);
 }
-
-document.getElementById("course-form")
 
 /* Function to remove a course from the list */
 function removeCourse(index: number): void {
