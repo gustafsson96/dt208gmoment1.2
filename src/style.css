@@ -1,3 +1,4 @@
+/* Default vite CSS */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -36,6 +37,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* Btn styling */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -63,6 +65,7 @@ button:focus-visible {
   margin-bottom: 4em;
 }
 
+/* Add course form styling */
 form {
   border: 1px solid #646cff;
   border-radius: 5px;
@@ -79,6 +82,7 @@ form input {
   font-size: 1em;
 }
 
+/* Course table styling */
 table {
   padding: 1em;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
@@ -127,7 +131,7 @@ table tr td {
   }
 }
 
-
+/* Default vite media query for color scheme */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
