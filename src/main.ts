@@ -23,7 +23,7 @@ async function fetchCourses(): Promise<void> {
 
   if (courses.length === 0) {
     try {
-      const response = await fetch("https://webbutveckling.miun.se/files/ramschema_ht24.json");
+      const response: Response = await fetch("https://webbutveckling.miun.se/files/ramschema_ht24.json");
       courses = await response.json();
 
       localStorage.setItem("courses", JSON.stringify(courses));
@@ -40,20 +40,24 @@ function addCourse(event: Event): void {
 
   // Get form and inputs
   const form = document.getElementById("add-course-form") as HTMLFormElement;
+
   const courseCodeInput = document.getElementById("course-code") as HTMLInputElement;
-  const courseCode = courseCodeInput.value;
+  const courseCode: string = courseCodeInput.value;
+
   const courseNameInput = document.getElementById("course-name") as HTMLInputElement;
-  const courseName = courseNameInput.value;
+  const courseName: string = courseNameInput.value;
+  
   const courseProgressionInput = document.getElementById("course-progression") as HTMLInputElement;
-  const courseProgression = courseProgressionInput.value as "A" | "B" | "C";
+  const courseProgression: "A" | "B" | "C" = courseProgressionInput.value as "A" | "B" | "C";
+  
   const syllabusInput = document.getElementById("course-syllabus") as HTMLInputElement;
-  const courseSyllabus = syllabusInput.value;
+  const courseSyllabus: string = syllabusInput.value;
 
   // Get courses from local storage
   let courses: CourseInfo[] = JSON.parse(localStorage.getItem("courses") || "[]");
 
   // Check if course code is unique
-  const isCodeUnique = !courses.some(course => course.code === courseCode);
+  const isCodeUnique: boolean = !courses.some(course => course.code === courseCode);
   if (!isCodeUnique) {
     alert("Kurskoden måste vara unik.");
     return;
